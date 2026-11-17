@@ -1,0 +1,1 @@
+{"name":"shorts-flow-customer","private":true,"type":"module","scripts":{"build":"node scripts/build.mjs","test":"node --test tests/*.test.mjs"},"dependencies":{"@supabase/ssr":"0.12.7","@supabase/supabase-js":"2.119.0"},"devDependencies":{"esbuild":"0.28.2","jsdom":"31.0.0"}}

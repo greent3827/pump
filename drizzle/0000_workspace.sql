@@ -1,0 +1,6 @@
+CREATE TABLE workspaces (
+  user_id TEXT PRIMARY KEY NOT NULL,
+  payload TEXT NOT NULL,
+  revision INTEGER NOT NULL DEFAULT 1,
+  updated_at TEXT NOT NULL
+);

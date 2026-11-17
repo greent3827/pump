@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env*
+.dev.vars*
+.sites-runtime/
+worker/assets.generated.mjs
+.wrangler/
+*.log
+*.sqlite*
+*.db
+*.pem
+*.key
+coverage/
+!.env.example

@@ -1,0 +1,24 @@
+{
+  "name": "shorts-flow-studio",
+  "main": "dist/worker.mjs",
+  "compatibility_date": "2026-11-16",
+  "workers_dev": true,
+  "vars": {
+    "GOOGLE_AUTH_READY": "true",
+    "ADSENSE_READY": "false",
+    "TOSS_BILLING_MODE": "test",
+    "BILLING_SCHEDULER_READY": "false",
+    "SUPABASE_URL": "https://nrcxvmxuriqudksracdh.supabase.co",
+    "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_g2MyqXUXgx6nPGLDng_scA_e2qQw_yl"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "shorts-flow-customer",
+      "database_id": "057c5a50-2dfb-4d49-956a-37e46b3e7f7f"
+    }
+  ]
+}

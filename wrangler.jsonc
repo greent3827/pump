@@ -3,6 +3,7 @@
   "main": "dist/worker.mjs",
   "compatibility_date": "2026-11-16",
   "workers_dev": true,
+  "keep_vars": true,
   "vars": {
     "GOOGLE_AUTH_READY": "true",
     "ADSENSE_READY": "false",

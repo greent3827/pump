@@ -1,0 +1,44 @@
+name: Test and deploy ShortsFlow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shorts-flow-production
+  cancel-in-progress: false
+
+jobs:
+  verify-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Deploy the existing production Worker
+        if: ${{ vars.CF_AUTO_DEPLOY_ENABLED == 'true' }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: '5486333020271c8188dda9975abec930'
+          WRANGLER_SEND_METRICS: 'false'
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN repository secret is required."
+            exit 1
+          fi
+          npx --yes wrangler@4 deploy --keep-vars
+      - name: Deployment pending token connection
+        if: ${{ vars.CF_AUTO_DEPLOY_ENABLED != 'true' }}
+        run: echo "Tests and build completed. Production deployment is disabled until token connection is approved."

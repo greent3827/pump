@@ -1,5 +1,6 @@
 {
   "name": "shorts-flow-studio",
+  "account_id": "5486333020271c8188dda9975abec930",
   "main": "dist/worker.mjs",
   "compatibility_date": "2026-11-16",
   "workers_dev": true,
